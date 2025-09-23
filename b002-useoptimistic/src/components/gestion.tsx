@@ -1,12 +1,7 @@
 import {  useOptimistic, useRef, startTransition } from "react";
 import { entregaMensaje } from "./entregaMensaje";
-import type { f_mensaje } from "../tipos/tipos";
+import type { f_mensaje, GestionProps } from "../tipos/tipos";
 
-
-interface GestionProps {
-  mensaje: f_mensaje[];
-  act: React.Dispatch<React.SetStateAction<f_mensaje[]>>;
-}
 
 export function Gestion({ mensaje , act}: GestionProps) {
   const formRef = useRef<HTMLFormElement>(null);
