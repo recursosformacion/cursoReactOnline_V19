@@ -11,9 +11,9 @@ function FormApp() {
 
   return (
     <div className="form-container">
-      <Suspense fallback={<Esperando/>} >
+     <Suspense fallback={<Esperando/>}>
         <PideTitulo/>
-        </Suspense>
+      </Suspense>  
       <div className="form-card">
         <form action={formAction}>
           <input
@@ -45,10 +45,9 @@ function FormApp() {
     </div>
   );
 }
-
 function Esperando(){
   return (
-    <h2> esperando información</h2>
+    <h2> buscando titulo</h2>
   )
 }
 

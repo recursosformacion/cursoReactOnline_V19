@@ -2,6 +2,8 @@ import { Suspense, useActionState } from "react";
 import { type estado, estadoInicial } from "../tipos/tipos";
 import { submitForm } from "./submitForm";
 import { PideTitulo } from "./PideTitulo";
+import BtnImprimir from "./botones/imprimir";
+import BtnVisualizar from "./botones/visualizar";
 
 function FormApp() {
   const [state, formAction, isPending] = useActionState<estado>(
@@ -31,6 +33,8 @@ function FormApp() {
           <button className="form-button" disabled={isPending}>
             {isPending ? "Enviando..." : "Enviar"}
           </button>
+          <BtnImprimir/>
+          <BtnVisualizar/>
           {state.mensaje && (
             <p
               className={`form-message ${

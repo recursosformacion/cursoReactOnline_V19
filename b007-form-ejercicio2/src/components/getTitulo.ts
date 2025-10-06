@@ -1,6 +1,6 @@
 
 export async function getTitulo(){
-    await new Promise((resolve) => setTimeout(resolve,1500));
+    await new Promise((resolve) => setTimeout(resolve,3000));
     return "Formulario suscripcion";
 }
 
