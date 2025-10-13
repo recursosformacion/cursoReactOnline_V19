@@ -33,7 +33,19 @@
   border-radius: 4px;
 }
 
+.precio{
+  margin:0 0 0 auto;
+  width: 50%;
+  font-weight:bold;
+
+}
+
 .item button {
-  margin: auto 0 auto auto;
-  background-color: antiquewhite;
+  margin: 0 0 auto auto;
+  background-color: chocolate;
+}
+
+.item button:disabled{
+  background-color: gray;
+  cursor:not-allowed;
 }

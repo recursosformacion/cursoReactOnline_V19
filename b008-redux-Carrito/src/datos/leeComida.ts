@@ -1,3 +1,5 @@
+import { calcularPrecio } from "../components/funciones";
+import type { comidaPre } from "../redux/tipos";
 import { API_POLLO, type comida } from "./urls";
 
 async function fetchData(): Promise<comida> {
@@ -8,6 +10,12 @@ async function fetchData(): Promise<comida> {
             console.log(platos);
             return platos.meals;
         });
-    return response;
+
+
+    const lista: comidaPre[] = [...response];
+    lista.forEach((plato) => {
+        plato.precio = calcularPrecio(plato.idMeal);
+    })
+    return lista;
 }
 export const ListaPlatos = fetchData();
