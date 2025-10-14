@@ -1,4 +1,5 @@
 import { arrFicheros } from "@/tipos/listaFicheros";
+import FileIcon from "@/ui/FileIcon";
 import Link from "next/link";
 import { ReadonlyURLSearchParams } from "next/navigation";
 import { JSX } from "react";
@@ -23,11 +24,7 @@ export default function DatosFichero({
     <>
       <tr key={file.id} className="file-list-item">
         <td className="file-icon">
-          {file.tipo === "directory" ? (
-            <i className="fa-solid fa-folder"></i>
-          ) : (
-            <i className="fa-solid fa-file"></i>
-          )}
+          <FileIcon file={file} />
         </td>
         <td className="file-name">
           <Link href={`${query}`} key={file.id}>
@@ -59,14 +56,25 @@ export default function DatosFichero({
 function definirParametros(file: arrFicheros, directorio: string): string {
   let ruta = "";
 
-  if (directorio !== "/") {
-    ruta = directorio;
+  if (file.tipo === "##subir") {
+    if (directorio === "/") {
+      ruta = "/";
+    } else {
+      const partes = directorio.split("/").filter((parte) => parte !== "");
+      if (partes.length > 0) {
+        partes.pop();
+        ruta = "/" + partes.join("/");
+      }
+    }
+  } else {
+    if (directorio !== "/") {
+      ruta = directorio;
+    }
+    if (!ruta.endsWith("/")) {
+      ruta += "/";
+    }
+    ruta += file.nombre;
   }
-  if (!ruta.endsWith("/")) {
-    ruta += "/";
-  }
-  ruta += file.nombre;
-
   const query = "?" + new ReadonlyURLSearchParams({ ruta: ruta }).toString();
   return query;
 }
