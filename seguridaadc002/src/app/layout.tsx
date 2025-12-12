@@ -11,7 +11,7 @@ export default function RootLayout({
       <body>
         <div className="principal">
           <nav className="navegacion">
-          
+            <BarraNavegacion />
           </nav>
 
           <main className="contenido">{children}</main>

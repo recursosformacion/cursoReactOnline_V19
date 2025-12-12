@@ -6,4 +6,4 @@ export interface arrFicheros {
     fechaMod?: Date;
     size?:number;
     tipo?: string;
-} 
+}
